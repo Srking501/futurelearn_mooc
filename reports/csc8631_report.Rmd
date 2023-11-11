@@ -71,11 +71,8 @@ best run in the online course.
 
 The following is the possible success criteria of Newcastle University:
 
-* Give insights on how "successful", is the overall 
-  percentage of participants have passed or not, such that
-  the University will be able to view the effectiveness of the course and 
-  derive the best run in the online course.
-
+* "How successful was the online course; has it improved over new runs of the
+course?"
   
 ### Assessing Situation: Inventory of Resources
 
