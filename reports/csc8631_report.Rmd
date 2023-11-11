@@ -311,7 +311,7 @@ picked rating system.
 
 This data lacks enough information to understand what is trying to represent. 
 An educated guess that it could be for representing the Newcastle University 
-stuff who keeps track of the online course and perhaps questions or feedback
+staff who keeps track of the online course and perhaps questions or feedback
 from the participants. This is because in the column `team_role` it 
 classifies the individuals in the data frame as `host`, `lead_educator`,
 `educator`, `mentor`, `reviewer` and `facilitator`.
