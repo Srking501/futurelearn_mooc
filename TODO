@@ -1,0 +1,4 @@
+[ ] Complete `course_structure.R`
+    * [ ] Separate the creation of a section into a different function
+    * [ ] Separate the runs steps values where the significant number
+    corresponds to the section number
