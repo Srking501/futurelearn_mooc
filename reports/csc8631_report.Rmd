@@ -405,31 +405,150 @@ the only 2
 sets of the data are "false" or "true", which is better represented as 
 a logical data type.
 
-```{r}
-# The Different Data in the Column `correct`
-cyber.security.1_question.response %>% count(correct)
+```{r correct_column, echo=FALSE, message=FALSE, warning=FALSE}
+run1_correct = cyber.security.1_question.response %>% select(correct) %>%
+    distinct() %>% rename("`correct` column values for Run 1" = correct)
+run2_correct = cyber.security.2_question.response %>% select(correct) %>%
+    distinct() %>% rename("`correct` column values for Run 2" = correct)
+run3_correct = cyber.security.3_question.response %>% select(correct) %>%
+    distinct() %>% rename("`correct` column values for Run 3" = correct)
+run4_correct = cyber.security.4_question.response %>% select(correct) %>%
+    distinct() %>% rename("`correct` column values for Run 4" = correct)
+run5_correct = cyber.security.5_question.response %>% select(correct) %>%
+    distinct() %>% rename("`correct` column values for Run 5" = correct)
+run6_correct = cyber.security.6_question.response %>% select(correct) %>%
+    distinct() %>% rename("`correct` column values for Run 6" = correct)
+run7_correct = cyber.security.7_question.response %>% select(correct) %>%
+    distinct() %>% rename("`correct` column values for Run 7" = correct)
+
+correct_df = bind_cols(run1_correct,
+                       run2_correct,
+                       run3_correct,
+                       run4_correct,
+                       run5_correct,
+                       run6_correct,
+                       run7_correct)
+
+rm(run1_correct,
+   run2_correct,
+   run3_correct,
+   run4_correct,
+   run5_correct,
+   run6_correct,
+   run7_correct)
+
+knitr::kable(correct_df, caption = "`correct` column only contains the values \"true\" and \"false\" ")
+rm(correct_df)
 ```
 
 Lastly, the column `cloze_response` is completely empty. Therefore, it cannot
 be used and it does not seem to be as important as the rest of the data frame's
 data.
 
-```{r}
-# The Lack of Data in the Column `cloze_response`
-cyber.security.1_question.response %>% count(cloze_response)
+
+```{r cloze_response, echo=FALSE, message=FALSE, warning=FALSE}
+run1_clresponse = cyber.security.1_question.response %>% select(cloze_response) %>%
+    distinct() %>% rename("`cl_response` column values for Run 1" = cloze_response)
+run2_clresponse = cyber.security.2_question.response %>% select(cloze_response) %>%
+    distinct() %>% rename("`cl_response` column values for Run 2" = cloze_response)
+run3_clresponse = cyber.security.3_question.response %>% select(cloze_response) %>%
+    distinct() %>% rename("`cl_response` column values for Run 3" = cloze_response)
+run4_clresponse = cyber.security.4_question.response %>% select(cloze_response) %>%
+    distinct() %>% rename("`cl_response` column values for Run 4" = cloze_response)
+run5_clresponse = cyber.security.5_question.response %>% select(cloze_response) %>%
+    distinct() %>% rename("`cl_response` column values for Run 5" = cloze_response)
+run6_clresponse = cyber.security.6_question.response %>% select(cloze_response) %>%
+    distinct() %>% rename("`cl_response` column values for Run 6" = cloze_response)
+run7_clresponse = cyber.security.7_question.response %>% select(cloze_response) %>%
+    distinct() %>% rename("`cl_response` column values for Run 7" = cloze_response)
+
+clresponse_df = bind_cols(run1_clresponse,
+                       run2_clresponse,
+                       run3_clresponse,
+                       run4_clresponse,
+                       run5_clresponse,
+                       run6_clresponse,
+                       run7_clresponse)
+
+rm(run1_clresponse,
+   run2_clresponse,
+   run3_clresponse,
+   run4_clresponse,
+   run5_clresponse,
+   run6_clresponse,
+   run7_clresponse)
+
+knitr::kable(clresponse_df, caption = "`cloze_response` column only contains `NA` values (`cloze_response` is abbreviated to `cl_response` for visualisation purposes)")
+rm(clresponse_df)
 ```
 
 ### II Data Quality Report - Missing or Inconsistent Data
 
-```{r}
-sprintf("Total of Empty `learner_id`: %s", nrow(cyber.security.1_question.response %>% 
-  filter(learner_id == "") %>%
-  select(learner_id)))
+
+```{r empty_learner_id_run1_example, echo=FALSE, message=FALSE, warning=FALSE}
+# sprintf("Total of Empty `learner_id` for Run 1: %s", nrow(cyber.security.1_question.response %>% 
+#   filter(learner_id == "") %>%
+#   select(learner_id)))
+
+knitr::kable(cyber.security.1_question.response %>% 
+                 filter(learner_id == "") %>% 
+                 select(-question_type, -cloze_response) %>%
+                 rename("week_num"      = week_number,
+                        "step_num"      = step_number,
+                        "question_num"  = question_number) %>%
+                 head(n = 4),
+             caption = "Example of Run 1 containing empty `learner_id` values but still have values across the other columns (excludes `question_type`, `cloze_respond` and rest of the rows for visualisation purposes)")
 ```
+
+
 In the column of `learner_id` there is missing data but yet it shows that those
 empty has data in other columns. There is no simple solution to re-populate the
 data, thus, due to the limited given time for this data mining project, the 
 missing `learner_id` will be just removed.
+
+
+```{r empty_learner_id_all_runs, echo=FALSE, message=FALSE, warning=FALSE}
+run1_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+    filter(learner_id == "") %>% count() %>% 
+    select(n) %>% rename("Total number of empty `learner_id` in Run 1" = n)
+run2_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+    filter(learner_id == "") %>% count() %>% 
+    select(n) %>% rename("Total number of empty `learner_id` in Run 2" = n)
+run3_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+    filter(learner_id == "") %>% count() %>% 
+    select(n) %>% rename("Total number of empty `learner_id` in Run 3" = n)
+run4_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+    filter(learner_id == "") %>% count() %>% 
+    select(n) %>% rename("Total number of empty `learner_id` in Run 4" = n)
+run5_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+    filter(learner_id == "") %>% count() %>% 
+    select(n) %>% rename("Total number of empty `learner_id` in Run 5" = n)
+run6_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+    filter(learner_id == "") %>% count() %>% 
+    select(n) %>% rename("Total number of empty `learner_id` in Run 6" = n)
+run7_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+    filter(learner_id == "") %>% count() %>% 
+    select(n) %>% rename("Total number of empty `learner_id` in Run 7" = n)
+
+empty_id_df = bind_cols(run1_empty_id,
+                       run2_empty_id,
+                       run3_empty_id,
+                       run4_empty_id,
+                       run5_empty_id,
+                       run6_empty_id,
+                       run7_empty_id)
+
+rm(run1_empty_id,
+   run2_empty_id,
+   run3_empty_id,
+   run4_empty_id,
+   run5_empty_id,
+   run6_empty_id,
+   run7_empty_id)
+
+knitr::kable(empty_id_df, caption = "Total of empty `learner_id` per run")
+rm(empty_id_df)
+```
 
 
 ## **Data Preparation**
