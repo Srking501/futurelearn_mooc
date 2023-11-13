@@ -1,4 +1,9 @@
-[ ] Complete `course_structure.R`
-    * [ ] Separate the creation of a section into a different function
-    * [ ] Separate the runs steps values where the significant number
-    corresponds to the section number
+[ ] For "Assessing Situation: Terminology" section, maybe mention archetypes
+[ ] Data preparation
+    * [ ] question.response dataset
+        * [ ] Remove column `question_type` becuase it only has one type which
+        is "MultipleChoice"
+        * [ ] Remove `cloze_response` as it only contains `NA` values
+        * [ ] Remove `response` as it is not needed, the `correct` column shows
+        a boolean if the participant students have answered correctly or not,
+        which is more useful for the business objective
