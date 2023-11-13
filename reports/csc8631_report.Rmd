@@ -511,22 +511,22 @@ missing `learner_id` will be just removed.
 run1_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
     filter(learner_id == "") %>% count() %>% 
     select(n) %>% rename("Total number of empty `learner_id` in Run 1" = n)
-run2_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+run2_empty_id = cyber.security.2_question.response %>% select(learner_id) %>%
     filter(learner_id == "") %>% count() %>% 
     select(n) %>% rename("Total number of empty `learner_id` in Run 2" = n)
-run3_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+run3_empty_id = cyber.security.3_question.response %>% select(learner_id) %>%
     filter(learner_id == "") %>% count() %>% 
     select(n) %>% rename("Total number of empty `learner_id` in Run 3" = n)
-run4_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+run4_empty_id = cyber.security.4_question.response %>% select(learner_id) %>%
     filter(learner_id == "") %>% count() %>% 
     select(n) %>% rename("Total number of empty `learner_id` in Run 4" = n)
-run5_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+run5_empty_id = cyber.security.5_question.response %>% select(learner_id) %>%
     filter(learner_id == "") %>% count() %>% 
     select(n) %>% rename("Total number of empty `learner_id` in Run 5" = n)
-run6_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+run6_empty_id = cyber.security.6_question.response %>% select(learner_id) %>%
     filter(learner_id == "") %>% count() %>% 
     select(n) %>% rename("Total number of empty `learner_id` in Run 6" = n)
-run7_empty_id = cyber.security.1_question.response %>% select(learner_id) %>%
+run7_empty_id = cyber.security.7_question.response %>% select(learner_id) %>%
     filter(learner_id == "") %>% count() %>% 
     select(n) %>% rename("Total number of empty `learner_id` in Run 7" = n)
 
