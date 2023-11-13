@@ -349,7 +349,7 @@ frames such as `cyber.security.1_leaving.survey.responses` to perhaps determine
 that the video might not been that informative or understandable to the 
 participant to complete (or even not that engaging to watch), or link it to the 
 `cyber.security.1_step.activity` to determine how useful were the videos to be
-able to pass the quizzes or tests in `cyber.security.1_question.response`.
+able to pass the questions in `cyber.security.1_question.response`.
 
 
 ### Verifying Data Quality: Data Quality Report
