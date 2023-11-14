@@ -6,22 +6,24 @@
 [ ] Data preparation
     * [ ] question.response dataset
 
-        * [ ] Remove `week_number`, `step_number` and `question_type` as it
+        * [X] Remove `week_number`, `step_number` and `question_type` as it
         is redundanted to `quiz_question`
 
-        * [ ] Remove column `question_type` becuase it only has one type which
+        * [X] Remove column `question_type` becuase it only has one type which
         is "MultipleChoice"
 
-        * [ ] Remove `cloze_response` as it only contains `NA` values
+        * [X] Remove `cloze_response` as it only contains `NA` values
 
-        * [ ] Remove `response` as it is not needed, the `correct` column shows
+        * [X] Remove `response` as it is not needed, the `correct` column shows
         a boolean if the participant students have answered correctly or not,
         which is more useful for the business objective
 
-        * [ ] Remove `submitted_at` as it not very relevant to the
+        * [X] Remove `submitted_at` as it not very relevant to the
         business objective
 
         * [ ] Change `learner_id` from character type to factor (categorical)
         data type
 
-        * [ ] Change `quiz_question` from character type to factore
+        * [ ] Change `quiz_question` from character type to factor (categorical)
+
+        * [ ] Change `correct` from character type to logical (boolean)
