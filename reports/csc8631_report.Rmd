@@ -357,7 +357,9 @@ able to pass the quizzes or tests in `cyber.security.1_question.response`.
 The data frame that is the most complete and could be most useful to infer an 
 data insight to answer the 
 [Newcastle University's success criteria](#determining-business-objectives-business-success-criteria) 
-is `cyber.security.1_question.response`. Thus, for now, the focus will be on it.
+is `cyber.security.1_question.response` as it enables a way to identify 
+participants' understanding of the course by answering questions from quizzes 
+and tests. Thus, for now, the focus will be on it.
 
 In this section, it first discusses the quality of the data types compare to the 
 data its representing; second, it will discuss any missing or inconsistent 
