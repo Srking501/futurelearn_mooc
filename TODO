@@ -3,8 +3,8 @@
 [ ] Under the "I Data Quality Report - Data Types", mention how the column
 `question_type` only have one value, "MultipleChoice".
 
-[ ] Data preparation
-    * [ ] question.response dataset
+[X] Data preparation
+    * [X] question.response dataset
 
         * [X] Remove `week_number`, `step_number` and `question_type` as it
         is redundanted to `quiz_question`
@@ -21,9 +21,9 @@
         * [X] Remove `submitted_at` as it not very relevant to the
         business objective
 
-        * [ ] Change `learner_id` from character type to factor (categorical)
+        * [X] Change `learner_id` from character type to factor (categorical)
         data type
 
-        * [ ] Change `quiz_question` from character type to factor (categorical)
+        * [X] Change `quiz_question` from character type to factor (categorical)
 
-        * [ ] Change `correct` from character type to logical (boolean)
+        * [X] Change `correct` from character type to logical (boolean)

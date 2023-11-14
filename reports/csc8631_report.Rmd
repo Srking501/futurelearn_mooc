@@ -324,7 +324,7 @@ looked like, for example the first video in the online course contains the
 number format of "01:39" which is usually representing "minutes:seconds", and 
 1 minute and 39 seconds in seconds are in total 99 seconds.
 
-From the other stats, the most interesting are the following
+From the other stats, the most interesting are the following:
 
   * `total_views`
   
@@ -371,7 +371,10 @@ Viewing the data types of each column in the data frame, it is divided in like
 the following:
 
 ```{r echo=FALSE}
-sapply(cyber.security.1_question.response, class)
+data_types = as.data.frame(sapply(cyber.security.1_question.response, class))
+data_types = data_types %>% rename("Data Types" = "sapply(cyber.security.1_question.response, class)")
+knitr::kable(data_types, caption = "Data types of the columns from `cyber.security.1_question.response` dataset (excluded other runs, all of which have the same columns, for visualisation purposes)")
+rm(data_types)
 ```
 
 All of the columns, beside `submitted_at` and `correct`, should be the data type 
@@ -557,32 +560,84 @@ rm(empty_id_df)
 
 ### Dataset: Dataset Description
 
-...
+The datasets of focus will be on `question_response` for each run, 
+that is `cyber.security.1_question.response` to 
+`cyber.security.7_question.response`. As discuss in the 
+[data quality section](#verifying-data-quality-data-quality-report), these are 
+the most complete and most related to the [business' success criteria](#determining-business-objectives-business-success-criteria).
 
 ### Selecting Data: Rationale for inclusion / exclusion
 
-...
+The datasets all have the same columns, each column has been discussed under the
+section [data quality report](#i-data-quality-report---data-types), however, 
+the useful columns are the following:
+
+* `learner_id` - to identify the participant for each of the question.
+    
+* `quiz_question` - to distinguish each question answered for each
+    student.
+    
+* `correct` - to see if a participant has answered the question correctly
+    or not.
+    
+These columns help to calculate a numerical census of the overall percentage of 
+participants answering the question correctly or not. It can also help to 
+find the lowest and highest percentages for questions answered correctly.
+
+The rest of the columns are either redundant or not useful:
+
+* `week_number`, `step_number` and `question_number` are basically the 
+    individual values that are being represented in `quiz_question`.
+    
+* `question_type` contains only one value which is "MultipleChoice".
+    
+* `response` are what the participants have choose as the answers, which is
+    not particulary useful as `correct` shows if the answers are correct 
+    anyways.
+    
+* `cloze_response` contain only the value `NA`
+    
+* `submitted_at` is not relevant as it only shows when the participant have
+    submitted the question.
+    
+The changes are made under the file `munge/01-A.R`, the datasets are
+going to be called `run1_qr` to `run1_qr` (`qr` stands for `question_response`).
 
 ### Cleaning Data: Data Cleaning Report
 
-...
+As discuss under the 
+[data quality report](#ii-data-quality-report---missing-or-inconsistent-data) 
+there are missing `learner_id` values which still contain values across the 
+other columns. However, due to the time constraints for this data mining report,
+the data would simply be deleted instead.
 
-### Constructing Data: Derived Attributes
-
-...
-
-### Constructing Data: Generated Records
-
-...
+The changes are made under the file `munge/01-B.R`.
 
 ### Integrating Data: Merged Data
 
-...
+There will be no merging data, as keeping the datasets separate for each run 
+makes it easy to do analysis in the [modelling section](#modelling).
 
 ### Formating Data: Reformatted Data
 
-...
+After excluding the irrelevant columns, the rest of the columns 
+data types are character types. `learner_id` and `quiz_question` data types will
+be changed into factor data type as these columns are basically categorical data; 
+for the `correct` as explained in 
+[data quality report](#i-data-quality-report---data-types) only contains 
+"false" and "true" thus it should reflect that by changing it to a logical 
+data type.
 
+```{r munge_qr, echo=FALSE}
+before_data_reformatting = cyber.security.1_question.response %>% 
+    select(learner_id, quiz_question, correct)
+data_types = as.data.frame(sapply(before_data_reformatting, class))
+data_types = data_types %>% rename("Data Types" = "sapply(before_data_reformatting, class)")
+knitr::kable(data_types, caption = "Data types of the columns from `run1_qr` dataset before data reformatting (excluded other runs, all of which have the same columns, for visualisation purposes)")
+rm(data_types, before_data_reformatting)
+```
+
+The changes are made under the file `munge/01-C.R`.
 
 ## **Modelling**
 
