@@ -351,7 +351,6 @@ participant to complete (or even not that engaging to watch), or link it to the
 `cyber.security.1_step.activity` to determine how useful were the videos to be
 able to pass the quizzes or tests in `cyber.security.1_question.response`.
 
-
 ### Verifying Data Quality: Data Quality Report
 
 The data frame that is the most complete and could be most useful to infer an 
@@ -398,11 +397,11 @@ attempting to be represented categorically:
   
   * `response` - the chosen answers for the `question_number`.
   
-The column `submitted_at` is the representing the time the answer was submitted,
+The column `submitted_at` is representing the time the answer was submitted,
 therefore,
 the data type of character does not fully captures the data. Converting it 
 to [POSIX date time](https://www.iso.org/iso-8601-date-and-time-format.html) 
-it helps to capture the time series of the data for data modelling and 
+will help to capture the time series of the data for data modelling and 
 exploration.
 
 For the column `correct`, even though the data type is represented as character, 
@@ -555,6 +554,37 @@ knitr::kable(empty_id_df, caption = "Total of empty `learner_id` per run")
 rm(empty_id_df)
 ```
 
+Moreover, `learner_id` have duplicates on the same `quiz_question`. This is due
+to participants attempting to submit new answers to the same questions. On 
+the other hand, some individual `learner_id` have not completed all of the 
+`quiz_question`.
+
+```{r duplicates_and_incomplete, echo=FALSE}
+example_run1_incomplete = cyber.security.1_question.response %>%
+    select(learner_id, quiz_question, submitted_at) %>%
+    filter(learner_id == "398a7b88-be48-4b29-9464-f41c7e475bfa")
+
+all_quiz_question = cyber.security.1_question.response %>%
+    select(quiz_question) %>%
+    distinct() %>% 
+    pull()
+
+knitr::kable(example_run1_incomplete, caption = "An example of a `learner_id` in Run 1 with duplicates on the same `quiz_question` and not completed all the course `quiz_question` (excluded other columns for visualisation purposes)")
+
+print("All of the `quiz_question` in Run 1")
+print(all_quiz_question)
+
+# knitr::kable(all_quiz_question, caption = "All of the `quiz_question` in Run 1")
+rm(example_run1_incomplete, all_quiz_question)
+```
+
+A solution for the duplicates could be taking the assumption that the first 
+submission of an individual `learner_id` is the honest attempt whereas the 
+others are simply re-attempts to get the right answer. For the individual 
+`learner_id` who have not attempting all of the `quiz_question`, removing those
+`learner_id` as it is not complete overview of those participants performance, 
+thus cannot be used for assessing the 
+[success of the online courses](#determining-business-objectives-business-success-criteria)
 
 ## **Data Preparation**
 
@@ -611,7 +641,12 @@ there are missing `learner_id` values which still contain values across the
 other columns. However, due to the time constraints for this data mining report,
 the data would simply be deleted instead.
 
-The changes are made under the file `munge/01-B.R`.
+Furthermore, there are [duplicates and some individual `learner_id` who have not completed all of the `quiz_question`](#ii-data-quality-report---missing-or-inconsistent-data). To fix
+that, remove duplicates by assuming that the first attempt is the honest attempt
+and the others are re-attempts to get the right answer, then remove any 
+`learner_id` individuals who have not completed all of course's `quiz_question`.
+
+The changes are made under the files `munge/01-B.R` and `munge/02-A.R`.
 
 ### Integrating Data: Merged Data
 
@@ -637,7 +672,7 @@ knitr::kable(data_types, caption = "Data types of the columns from `run1_qr` dat
 rm(data_types, before_data_reformatting)
 ```
 
-The changes are made under the file `munge/01-C.R`.
+The changes are made under the file `munge/02-B.R`.
 
 ## **Modelling**
 
