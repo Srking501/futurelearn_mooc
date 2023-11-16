@@ -607,6 +607,9 @@ the useful columns are the following:
 * `quiz_question` - to distinguish each question answered for each
     student.
     
+* `week_number`, `step_number` and `question_number` - to subset the data to 
+identify section, step number and question number for [modelling](#modelling).
+    
 * `correct` - to see if a participant has answered the question correctly
     or not.
     
@@ -615,9 +618,6 @@ participants answering the question correctly or not. It can also help to
 find the lowest and highest percentages for questions answered correctly.
 
 The rest of the columns are either redundant or not useful:
-
-* `week_number`, `step_number` and `question_number` are basically the 
-    individual values that are being represented in `quiz_question`.
     
 * `question_type` contains only one value which is "MultipleChoice".
     
@@ -656,7 +656,8 @@ makes it easy to do analysis in the [modelling section](#modelling).
 ### Formating Data: Reformatted Data
 
 After excluding the irrelevant columns, the rest of the columns 
-data types are character types. `learner_id` and `quiz_question` data types will
+data types are character types or numerical data types. 
+`learner_id` and `quiz_question` data types will
 be changed into factor data type as these columns are basically categorical data; 
 for the `correct` as explained in 
 [data quality report](#i-data-quality-report---data-types) only contains 
@@ -665,7 +666,7 @@ data type.
 
 ```{r munge_qr, echo=FALSE}
 before_data_reformatting = cyber.security.1_question.response %>% 
-    select(learner_id, quiz_question, correct)
+    select(-question_type, -response, -cloze_response, -submitted_at)
 data_types = as.data.frame(sapply(before_data_reformatting, class))
 data_types = data_types %>% rename("Data Types" = "sapply(before_data_reformatting, class)")
 knitr::kable(data_types, caption = "Data types of the columns from `run1_qr` dataset before data reformatting (excluded other runs, all of which have the same columns, for visualisation purposes)")
@@ -674,7 +675,49 @@ rm(data_types, before_data_reformatting)
 
 The changes are made under the file `munge/02-B.R`.
 
+## Data understanding - after data preprocessing
+
+### Exploring data
+
+Exploring the datasets after data preprocessing has shown that the first run 
+has the widest margin on total size of rows, totaling
+`r format(run1_qr %>% nrow(), big.mark = ",")`. This can impact the 
+accuracy of comparing runs to achieve [business' success criteria](#determining-business-objectives-business-success-criteria) as the 
+first run has the most data, whereas the other course runs are more scarce 
+compare to it - there more participants completing the course in run 1 rather
+any other run.
+
+```{r total_rows_per_run, echo=FALSE}
+total_rows_per_run = data.frame(runs = c("Run 1",
+                                           "Run 2",
+                                           "Run 3",
+                                           "Run 4",
+                                           "Run 5",
+                                           "Run 6",
+                                           "Run 7"), 
+                                total_rows = c(
+                                    format(run1_qr %>% nrow(), big.mark = ","),
+                                    format(run2_qr %>% nrow(), big.mark = ","),
+                                    format(run3_qr %>% nrow(), big.mark = ","),
+                                    format(run4_qr %>% nrow(), big.mark = ","),
+                                    format(run5_qr %>% nrow(), big.mark = ","),
+                                    format(run6_qr %>% nrow(), big.mark = ","),
+                                    format(run7_qr %>% nrow(), big.mark = ",")
+                                    ))
+total_rows_per_run = total_rows_per_run %>%
+    rename("Total rows of each run" = total_rows, "Course Runs" = runs)
+
+knitr::kable(total_rows_per_run, caption = "Total rows of each run, `Run 1` is by far the largest out of all rows")
+rm(total_rows_per_run)
+```
+
 ## **Modelling**
+
+```{r cycle1_modelling, echo=FALSE, message=FALSE, warning=FALSE}
+source("src/cycle1_modelling.R")
+```
+
+### Selecting model technique
 
 ...
 
@@ -688,3 +731,6 @@ The changes are made under the file `munge/02-B.R`.
 
 ...
 
+# Cycle 2
+
+...
