@@ -162,7 +162,8 @@ combined_bar_plot = ggplot(combined_runs_correct, aes(x = `Course Run`, y = perc
          x = "Course Run",
          y = "Percentage (%)",
          fill = "Response") +
-    theme_minimal()
+    theme_minimal() +
+    theme(plot.title = element_text(size = 10))
 
 combined_runs_correct_2 = combined_runs_correct %>%
     pivot_wider(names_from = Response, values_from = count:percentage) %>%

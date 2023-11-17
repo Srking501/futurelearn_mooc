@@ -719,8 +719,52 @@ source("src/cycle1_modelling.R")
 
 ### Selecting model technique
 
-...
+Following the 
+[business success criteria](#determining-business-objectives-business-success-criteria)
+to represent the retrieved data after [data preparation](#data-preparation), a 
+model of a barplot representing each run overall percentage of `correct` and 
+`not correct` answers as stack bars can help to easily interpret the runs'
+overall participants performance on understanding the material and answering 
+the question corretly. In addition to the barplot, a lineplot is an option to 
+see the line for the percentage of `correct` answers across course runs, helping
+to answering the [success criteria "...has it improved over new runs of the
+course?"](#determining-business-objectives-business-success-criteria)
 
+### Building models: models and models descriptions
+
+```{r barplot_with_lineplot_correct, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Percentage of 'Correct' and 'Not correct' answers for each course run"}
+combined_bar_plot
+
+quantile_crc = only_correct_runs %>% 
+    select(percentage) %>% 
+    pull() %>% 
+    quantile() %>%
+    t() 
+    
+
+knitr::kable(combined_runs_correct_2, caption = "Overiew of `correct` and `not correct` values in each run")
+knitr::kable(quantile_crc, col.names = c("Min Correct",
+           "Q1 Correct",
+           "Average Correct",
+           "Q3 Correct",
+           "Max Correct") , caption = "Quantiles of `correct` answers on the entire course runs")
+```
+Figure 1 retrieves the overall total of all participants answers in each course
+run and extracts the percentage of `correct` and `not correct` answers, then 
+makes a stack bar plot. This results in an easier way to interpret course run
+performance individually.
+
+After that, the line plot on top of the barplot shows the trend of percentage 
+of `correct` answers over the course runs. This helps to see visually if there 
+the trend improving or worsening across course runs.
+
+Table 9 is a summary table that accompanies Figure 1 by showing the exact values 
+that is being represented in the figure, it is also show the number of total 
+of `correct` and `not correct` answers made in each run.
+
+Table 10 is the quantiles for percentage of `correct` answers for all of runs in
+total. This helps to see the least, quartiles, average and largest values of 
+the percentage of `correct`.
 
 ## **Evaluation**
 

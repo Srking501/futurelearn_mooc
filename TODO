@@ -1,3 +1,6 @@
+---
+DATA MINING REPORT
+
 [ ] For "Assessing Situation: Terminology" section, maybe mention archetypes
 
 [ ] Under the "I Data Quality Report - Data Types", mention how the column
@@ -8,11 +11,15 @@ distinguish each one is `submitted_at`. Therefore, in data cleaning, only
 assume the first submission as the others could be participants trying to get
 the right answers after the fact.
 
+[ ] Maybe keep `week_number` to make it easy to see the performance of each
+section for each run
+
 [X] Data preparation
     * [X] question.response dataset
 
         * [X] Remove `week_number`, `step_number` and `question_type` as it
-        is redundanted to `quiz_question`
+        is redundanted to `quiz_question` - IT MAKES IT EASY TO IDENTIFY
+        SECTION, STEP NUMBER and QUESTION NUMBER
 
         * [X] Remove column `question_type` becuase it only has one type which
         is "MultipleChoice"
@@ -32,3 +39,13 @@ the right answers after the fact.
         * [X] Change `quiz_question` from character type to factor (categorical)
 
         * [X] Change `correct` from character type to logical (boolean)
+
+---
+REFLECTION
+
+[ ] Difficulties to write dynamic code, the programming language design of
+how it creates dataframes requires the use of variable rather than dynamically
+selecting the dataframes and renaming them or creating new dataframes through
+a function
+
+[ ] Discuss how exploring data should also be an option after data preparation
