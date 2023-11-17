@@ -675,9 +675,9 @@ rm(data_types, before_data_reformatting)
 
 The changes are made under the file `munge/02-B.R`.
 
-## Data understanding - after data preprocessing
+## Data Understanding - after data preprocessing
 
-### Exploring data
+### Exploring Data
 
 Exploring the datasets after data preprocessing has shown that the first run 
 has the widest margin on total size of rows, totaling
@@ -708,7 +708,6 @@ total_rows_per_run = total_rows_per_run %>%
     rename("Total rows of each run" = total_rows, "Course Runs" = runs)
 
 knitr::kable(total_rows_per_run, caption = "Total rows of each run, `Run 1` is by far the largest out of all rows")
-rm(total_rows_per_run)
 ```
 
 ## **Modelling**
@@ -717,7 +716,7 @@ rm(total_rows_per_run)
 source("src/cycle1_modelling.R")
 ```
 
-### Selecting model technique
+### Selecting Model Technique
 
 Following the 
 [business success criteria](#determining-business-objectives-business-success-criteria)
@@ -730,7 +729,7 @@ see the line for the percentage of `correct` answers across course runs, helping
 to answering the [success criteria "...has it improved over new runs of the
 course?"](#determining-business-objectives-business-success-criteria)
 
-### Building models: models and models descriptions
+### Building Models: Models and Models Descriptions
 
 ```{r barplot_with_lineplot_correct, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Percentage of 'Correct' and 'Not correct' answers for each course run"}
 combined_bar_plot
@@ -766,15 +765,139 @@ Table 10 is the quantiles for percentage of `correct` answers for all of runs in
 total. This helps to see the least, quartiles, average and largest values of 
 the percentage of `correct`.
 
+### Assessing Models
+
+```{r metrics_correct, echo=FALSE, message=FALSE, warning=FALSE}
+run2_percent = paste0(combined_runs_correct_2 %>% 
+           filter(`Course Run` == "Run 2") %>% 
+           pull(`Percentage of correct`), "%")
+run6_percent = paste0(combined_runs_correct_2 %>% 
+           filter(`Course Run` == "Run 6") %>% 
+           pull(`Percentage of correct`), "%")
+run1_2_increase = paste0("+", combined_runs_correct_2 %>%
+    filter(`Course Run` == "Run 2") %>%
+    pull(`Percentage of correct`) - combined_runs_correct_2 %>%
+    filter(`Course Run` == "Run 1") %>%
+    pull(`Percentage of correct`), "%")
+run2_4_decrease = paste0(combined_runs_correct_2 %>%
+    filter(`Course Run` == "Run 4") %>%
+    pull(`Percentage of correct`) - combined_runs_correct_2 %>%
+    filter(`Course Run` == "Run 2") %>%
+    pull(`Percentage of correct`), "%")
+run4_5_increase = paste0("+", combined_runs_correct_2 %>%
+    filter(`Course Run` == "Run 5") %>%
+    pull(`Percentage of correct`) - combined_runs_correct_2 %>%
+    filter(`Course Run` == "Run 4") %>%
+    pull(`Percentage of correct`), "%")
+run5_7_decrease = paste0(combined_runs_correct_2 %>%
+    filter(`Course Run` == "Run 7") %>%
+    pull(`Percentage of correct`) - combined_runs_correct_2 %>%
+    filter(`Course Run` == "Run 5") %>%
+    pull(`Percentage of correct`), "%")
+```
+
+In Figure 1, the run with highest correct answers is "Run 2" with a 
+`r run2_percent` whereas the lowest is "Run 6" with a `r run6_percent`. For the
+lineplot the trend seem to fluctuate:
+
+* "Run 1" to "Run 2" there is an increase of `r run1_2_increase` 
+
+* "Run 2" to "Run 4" there is a continuous decrease of `r run2_4_decrease` 
+
+* "Run 4" to "Run 5" there is an increase of `r run4_5_increase`
+
+* "Run 5" to "Run 7" there is a slight continuous decrease of `r run5_7_decrease`
+
+
+## **Evaluation**
+
+### Evaluating Results
+
+```{r metrics_overall, echo=FALSE, warning=FALSE, message=FALSE}
+run1_rows_total = total_rows_per_run %>% filter(`Course Runs` == "Run 1") %>% pull(`Total rows of each run`)
+run5_rows_total = total_rows_per_run %>% filter(`Course Runs` == "Run 5") %>% pull(`Total rows of each run`)
+run2_rows_total = total_rows_per_run %>% filter(`Course Runs` == "Run 2") %>% pull(`Total rows of each run`)
+```
+
+Determining the most successful course run from dataset available, "Run 2" has the overall
+best percentage of `correct` answers with `r run2_percent` and the least 
+successful is "Run 6" with worst percentage of `correct` answers with
+`r run6_percent`. However, as seen in the [exploring data](#exploring-data), 
+after [data preparation](#data-preparation) where only the participants that
+was retrieve are those who completed every `quiz_question` for each course run
+to maintain an accurate and consistent dataset, it has costed the overall total
+rows of data where "Run 1" has a total of `r run1_rows_total` compared to other
+runs with much lower rows like `r run5_rows_total`. This effects the 
+reliability of the dataset as the only run with a reasonable size of data is 
+"Run 1" and perhaps "Run 2" with `r run2_rows_total`.
+
+For finding if the course runs have improved overtime, it is the same idea where
+the dataset for other course runs are significantly low to reach conclusion on,
+but from the dataset available it would seem that there is not any improvements 
+nor degradation as the percentage of `correct` fluctuate around the average 
+mean of `r paste0(as.data.frame(quantile_crc) %>% pull("50%"),"%")`.
+
+When considering this limited dataset, it would seem that the course is 
+slightly successful with an average percentage of `correct` being `r paste0(as.data.frame(quantile_crc) %>% pull("50%"),"%")` showing that there more participants answering questions 
+correctly than not. But as it is explained earlier, the dataset is limited to 
+reach accurate conclusions.
+
+### Determining Next Steps
+
+To disregard this dataset that was made from 
+[data preparation](#data-preparation) is going to be a waste, therefore, it is 
+better solution to combine the course runs into one to determine other 
+insights for the business needs. A possible route is determining for all the 
+participants who have participated on answering all the questions in the courses
+runs whether the having participants getting more `correct` answer encourages 
+the participants to buy a certificate from the course or there is no 
+correlation to it. This would help to give the business an insight to whether 
+improve the course runs to help the understanding of the participants to 
+successfully answer the question more `correctly` or rather even encourage 
+more participants to answer all quizzes and test in the course to helps sales
+on course certificates.
+
+
+# Cycle 2
+
+## **Business Understanding**
+
+### Determining Business Objectives: Business Objectives
+
+Following the [first cycle](#cycle-1), a better use of the data was to combine
+the course runs into one to determine better insights. One solution, as 
+mentioned in [determining next steps](#determing-next-steps) section, is to 
+find correlation if the participants answering quizzes and tests more correctly
+would encourage the participants to buy course certificates.
+
+[FutureLearn](https://www.futurelearn.com/) is a company that might seek more
+revenue through selling
+certificates for the course, therefore, correlation on this can let the company
+to focus more helping students understand the course better and encouraging
+the participants to engage on answering quizzes and questions.
+
+### Determining Business Objectives: Business Success Criteria
+
+* "Is there a correlation where if participants are answering quizzes and tests
+more correctly, it would likely encourage the participants to buy a 
+course certificates?"
+
+## **Data Understanding**
+
+...
+
+## **Data Preparation**
+
+...
+
+## **Modelling**
+
+...
+
 ## **Evaluation**
 
 ...
 
-
 ## **Deployment**
-
-...
-
-# Cycle 2
 
 ...
