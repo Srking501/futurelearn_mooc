@@ -369,7 +369,7 @@ data.
 Viewing the data types of each column in the data frame, it is divided in like 
 the following:
 
-```{r echo=FALSE}
+```{r data_quality_cycle1, echo=FALSE}
 data_types = as.data.frame(sapply(cyber.security.1_question.response, class))
 data_types = data_types %>% rename("Data Types" = "sapply(cyber.security.1_question.response, class)")
 knitr::kable(data_types, caption = "Data types of the columns from `cyber.security.1_question.response` dataset (excluded other runs, all of which have the same columns, for visualisation purposes)")
@@ -816,7 +816,7 @@ lineplot the trend seem to fluctuate:
 ```{r metrics_overall, echo=FALSE, warning=FALSE, message=FALSE}
 run1_rows_total = total_rows_per_run %>% filter(`Course Runs` == "Run 1") %>% pull(`Total rows of each run`)
 run5_rows_total = total_rows_per_run %>% filter(`Course Runs` == "Run 5") %>% pull(`Total rows of each run`)
-run2_rows_total = total_rows_per_run %>% filter(`Course Runs` == "Run 2") %>% pull(`Total rows of each run`)
+run4_rows_total = total_rows_per_run %>% filter(`Course Runs` == "Run 4") %>% pull(`Total rows of each run`)
 ```
 
 Determining the most successful course run from dataset available, "Run 2" has the overall
@@ -829,7 +829,7 @@ to maintain an accurate and consistent dataset, it has costed the overall total
 rows of data where "Run 1" has a total of `r run1_rows_total` compared to other
 runs with much lower rows like `r run5_rows_total`. This effects the 
 reliability of the dataset as the only run with a reasonable size of data is 
-"Run 1" and perhaps "Run 2" with `r run2_rows_total`.
+"Run 1" and perhaps "Run 4" with `r run4_rows_total`.
 
 For finding if the course runs have improved overtime, it is the same idea where
 the dataset for other course runs are significantly low to reach conclusion on,
@@ -884,7 +884,74 @@ course certificates?"
 
 ## **Data Understanding**
 
-...
+### Describing Data: Data Description Report
+
+The [FutureLearn](https://www.futurelearn.com/) platform provides an option 
+to purchase certificates from the online courses. The datasets that contains
+any mention of purchase are `cyber.security.1_enrolments` to 
+`cyber.security.7_enrolments`.
+
+The most related columns are for the enrolments datasets:
+
+* `learner_id` - unique id to identify individual participants.
+
+* `purchased_statement_at` - date of purchase for a certificate.
+
+### Exploring Data
+
+```{r enrolments_data, echo=FALSE, message=FALSE, warning=FALSE}
+combined_runs_enrolments = bind_rows(cyber.security.1_enrolments,
+                                      cyber.security.2_enrolments,
+                                      cyber.security.3_enrolments,
+                                      cyber.security.4_enrolments,
+                                      cyber.security.5_enrolments,
+                                      cyber.security.6_enrolments,
+                                      cyber.security.7_enrolments)
+
+purchased_cert = data.frame(purchased_statement = combined_runs_enrolments %>% filter(purchased_statement_at != "") %>% nrow(),
+                            not_purchased_statement = combined_runs_enrolments %>% filter(purchased_statement_at == "") %>% nrow()) %>%
+    rename("Bought Certificate" = purchased_statement,
+           "Not Bought Certificate" = not_purchased_statement)
+knitr::kable(purchased_cert, caption = "Total participants who bought or not bought certificates")
+```
+
+Exploring the enrolments data column `purchased_statement_at`, there are
+a total of `r combined_runs_enrolments %>% filter(purchased_statement_at != "") %>% nrow()`
+out of `r combined_runs_enrolments %>% nrow()` participants who have purchased
+a certificate.
+
+### Verifying Data Quality: Data Quality Report
+
+In this section of quality report, the enrolments dataset columns that will only
+be covered is "learner_id" and "purchased_statement" as there are the most
+related to the 
+[business success](#determining-business-objectives-business-success-criteria). 
+
+### I Data Quality Report - Data Types
+
+```{r data_quality_cycle2, echo=FALSE, message=FALSE, warning=FALSE}
+data_types_enrolment = as.data.frame(sapply(combined_runs_enrolments %>%
+                                                select(learner_id, purchased_statement_at),
+                                            class))
+data_types_enrolment = data_types_enrolment %>% rename("Data Types" = "sapply(combined_runs_enrolments %>% select(learner_id, purchased_statement_at), class)")
+knitr::kable(data_types_enrolment, caption = "Data types of `learner_id` and `purchased_statement_at` columns from the enrolments dataset")
+```
+
+Both columns of `learner_id` and `purchased_statement_at` are data types of 
+character, which is does not fit the values those columns contain.
+
+* `learner_id` - more of a categorical data, it contains special unique 
+ids' for each participants.
+
+* `purchased_statement_at`  - it is showing a [POSIX date time](https://www.iso.org/iso-8601-date-and-time-format.html), therefore, it is
+convert to POSIX standard to capture the time series data,
+
+
+### II Data Quality Report - Missing or Inconsistent Data
+
+There is no significant missing data nor inconsistent data in the 
+enrolments dataset to be found that effects the 
+[business success criteria](#determining-business-objectives-business-success-criteria).
 
 ## **Data Preparation**
 
