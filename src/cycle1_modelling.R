@@ -158,11 +158,18 @@ combined_bar_plot = ggplot(combined_runs_correct, aes(x = `Course Run`, y = perc
               color = "black", size = 1) +
     scale_fill_manual(values = c("Not correct" = "orange",
                                  "Correct" = "#ADD8E6")) +
-    labs(title = "Total percentage of 'Correct' and 'Not correct' answers for each course run",
+    labs(title = "Bar & line plot of percentage of 'Correct' and 'Not correct' answers for each course run",
          x = "Course Run",
          y = "Percentage (%)",
          fill = "Response") +
     theme_minimal()
+
+combined_runs_correct_2 = combined_runs_correct %>%
+    pivot_wider(names_from = Response, values_from = count:percentage) %>%
+    rename("Total of not correct" = `count_Not correct`,
+           "Total of correct" = count_Correct,
+           "Percentage of not correct" = `percentage_Not correct`,
+           "Percentage of correct" = percentage_Correct)
 
 # Scatter plot with boxplot
 #
