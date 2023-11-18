@@ -36,9 +36,9 @@ that the business intentions are changed to meet align more to the data.
 
 # Cycle 1
 
-## **Business Understanding**
+## **Business Understanding 1**
 
-### Determining Business Objectives: Background
+### Determining Business Objectives: Background 1
 
 This online course is about the discipline Cybersecurity made by 
 Newcastle University, a high education provider that seeks to make the course 
@@ -55,7 +55,7 @@ course, did most individuals pass the online course and did it increase over
 the life time of the course?
 
 
-### Determining Business Objectives: Business Objectives
+### Determining Business Objectives: Business Objectives 1
 
 FutureLearn's raw data of the online course needs insights to be able to quantify
 measurements of participating individuals engagement on the course for Newcastle
@@ -67,14 +67,14 @@ the participants have pass or not. This is important
 because it will show the effectiveness of their course and determine the 
 best run in the online course.
 
-### Determining Business Objectives: Business Success Criteria
+### Determining Business Objectives: Business Success Criteria 1
 
 The following is the possible success criteria of Newcastle University:
 
 * "How successful was the online course; has it improved over new runs of the
 course?"
   
-### Assessing Situation: Inventory of Resources
+### Assessing Situation: Inventory of Resources 1
 
 The given data is 7 runs of the online course from September 2016 to
 February 2018, where it is not expected to have more data from the 
@@ -83,11 +83,11 @@ Therefore, management of resources are much easier and manageable as the only
 data to be concern with is the provided 7 runs data.
 
 
-### Assessing Situation: Requirements, assumptions, and constraints
+### Assessing Situation: Requirements, assumptions, and constraints 1
 
 For requirements, there is a deadline of submission for
 this report, limiting the chance of deep data exploration. Thus, the report will 
-focus on the basic vital needs to meet the [Newcastle Univesity's success criteria](#determining-business-objectives-business-success-criteria).
+focus on the basic vital needs to meet the [Newcastle Univesity's success criteria](#determining-business-objectives-business-success-criteria-1).
 
 For assumptions, the models for the data should be presented in way where it can
 show trends and variance in the data, so that it will be possible to explain to
@@ -101,15 +101,15 @@ from FutureLearn, but the only issue is that this is the only data that will be
 provided.
 
 
-### Assessing Situation: Risks and Contingencies
+### Assessing Situation: Risks and Contingencies 1
 
 There is the risk of data not showing results of that convey passed or failed 
 participants, but rather show other factors such as the participants 
 satisfaction or engagement in the sense that they have partaken 
 in the activities of the course. For that, the plan is to adjust to these 
 types of data factors and readjust the 
-[Newcastle University's success criteria](#determining-business-objectives-business-success-criteria) to reflect
-better to the data and the [business needs](#determining-business-objectives-business-objectives).
+[Newcastle University's success criteria](#determining-business-objectives-business-success-criteria-1) to reflect
+better to the data and the [business needs](#determining-business-objectives-business-objectives-1).
 
 Furthermore, there is risk of the data to be lost or corrupted, thus a backup is
 made for the data away from the [ProjectTemplate](http://projecttemplate.net/)
@@ -117,14 +117,14 @@ made for the data away from the [ProjectTemplate](http://projecttemplate.net/)
 the cloud by [OneDrive](https://www.microsoft.com/en-gb/microsoft-365/onedrive/online-cloud-storage) provided by Newcastle University.
 
 
-### Assessing Situation: Terminology
+### Assessing Situation: Terminology 1
 
 There is no set of business terminologies to be aware of, therefore, there 
 should not be any special terms that contain exclusive meanings in the data by
 Newcastle University or FutureLearn.
 
 
-### Assessing Situation: Cost and Benefits
+### Assessing Situation: Cost and Benefits 1
 
 There is no cost on this project, in terms of financial cost but instead it is a 
 workflow cost, where this data mining project is heavily limited by time.
@@ -132,14 +132,14 @@ However, the benefits are that Newcastle University would have a better
 understanding on the performance of their online course.
 
 
-### Determining Data Mining Goals: Data Mining Goals
+### Determining Data Mining Goals: Data Mining Goals 1
 
 Gain insights on the data to determine what constitutes as "success" in the 
 online course by concept description and classify those who have passed or 
 those who have not passed.
 
 
-### Determining Data Mining Goals: Data Mining Success Criteria
+### Determining Data Mining Goals: Data Mining Success Criteria 1
 
 Models that can identify the percentage of passed or not passed participants 
 using the "success" data to show and view the change of "success" over the 7 runs 
@@ -150,9 +150,9 @@ for Newcastle University over the span of 7 runs and identify the best run in
 the online course.
 
 
-## **Data Understanding**
+## **Data Understanding 1**
 
-### Describing Data: Data Description Report
+### Describing Data: Data Description Report 1
 
 Before describing the data, there is the need to describe how the online
 course is structured. The online course duration is 3 weeks, therefore it 
@@ -247,7 +247,7 @@ to the course it would target archetypes of users - with more supporting data -
 that has the most engagement (for example, successfully completing the whole 
 course) to market for.
 
-In contrast, from [Business Understanding section](#business-understanding), 
+In contrast, from [Business Understanding section](#business-understanding-1), 
 Newcastle University would prefer to understand if their online course was 
 simply "successful", in the sense that the participants have passed the online
 course, on the 7 runs of the course.
@@ -285,7 +285,7 @@ performed better than others.
 It also contains a column, `correct`, which shows if the participant have 
 answered the question of a quiz or test correctly or not. This is especially 
 useful to determine the total passed participants in the course to meet 
-[Newcastle University's success criteria](#determining-business-objectives-business-success-criteria).
+[Newcastle University's success criteria](#determining-business-objectives-business-success-criteria-1).
 
 #### 5.
 
@@ -351,11 +351,11 @@ participant to complete (or even not that engaging to watch), or link it to the
 `cyber.security.1_step.activity` to determine how useful were the videos to be
 able to pass the quizzes or tests in `cyber.security.1_question.response`.
 
-### Verifying Data Quality: Data Quality Report
+### Verifying Data Quality: Data Quality Report 1
 
 The data frame that is the most complete and could be most useful to infer an 
 data insight to answer the 
-[Newcastle University's success criteria](#determining-business-objectives-business-success-criteria) 
+[Newcastle University's success criteria](#determining-business-objectives-business-success-criteria-1) 
 is `cyber.security.1_question.response` as it enables a way to identify 
 participants' understanding of the course by answering questions from quizzes 
 and tests. Thus, for now, the focus will be on it.
@@ -364,7 +364,7 @@ In this section, it first discusses the quality of the data types compare to the
 data its representing; second, it will discuss any missing or inconsistent 
 data.
 
-### I Data Quality Report - Data Types
+### I Data Quality Report - Data Types 1
 
 Viewing the data types of each column in the data frame, it is divided in like 
 the following:
@@ -486,7 +486,7 @@ knitr::kable(clresponse_df, caption = "`cloze_response` column only contains `NA
 rm(clresponse_df)
 ```
 
-### II Data Quality Report - Missing or Inconsistent Data
+### II Data Quality Report - Missing or Inconsistent Data 1 {#selecting-data-1}
 
 
 ```{r empty_learner_id_run1_example, echo=FALSE, message=FALSE, warning=FALSE}
@@ -584,22 +584,22 @@ others are simply re-attempts to get the right answer. For the individual
 `learner_id` who have not attempting all of the `quiz_question`, removing those
 `learner_id` as it is not complete overview of those participants performance, 
 thus cannot be used for assessing the 
-[success of the online courses](#determining-business-objectives-business-success-criteria)
+[success of the online courses](#determining-business-objectives-business-success-criteria-1)
 
-## **Data Preparation**
+## **Data Preparation 1**
 
-### Dataset: Dataset Description
+### Dataset: Dataset Description 1
 
 The datasets of focus will be on `question_response` for each run, 
 that is `cyber.security.1_question.response` to 
 `cyber.security.7_question.response`. As discuss in the 
-[data quality section](#verifying-data-quality-data-quality-report), these are 
-the most complete and most related to the [business' success criteria](#determining-business-objectives-business-success-criteria).
+[data quality section](#verifying-data-quality-data-quality-report-1), these are 
+the most complete and most related to the [business' success criteria](#determining-business-objectives-business-success-criteria-1).
 
-### Selecting Data: Rationale for inclusion / exclusion
+### Selecting Data: Rationale for inclusion / exclusion 1
 
 The datasets all have the same columns, each column has been discussed under the
-section [data quality report](#i-data-quality-report---data-types), however, 
+section [data quality report](#i-data-quality-report---data-types-1), however, 
 the useful columns are the following:
 
 * `learner_id` - to identify the participant for each of the question.
@@ -608,7 +608,7 @@ the useful columns are the following:
     student.
     
 * `week_number`, `step_number` and `question_number` - to subset the data to 
-identify section, step number and question number for [modelling](#modelling).
+identify section, step number and question number for [modelling](#modelling-1).
     
 * `correct` - to see if a participant has answered the question correctly
     or not.
@@ -633,34 +633,34 @@ The rest of the columns are either redundant or not useful:
 The changes are made under the file `munge/01-A.R`, the datasets are
 going to be called `run1_qr` to `run1_qr` (`qr` stands for `question_response`).
 
-### Cleaning Data: Data Cleaning Report
+### Cleaning Data: Data Cleaning Report 1
 
 As discuss under the 
-[data quality report](#ii-data-quality-report---missing-or-inconsistent-data) 
+[data quality report](#ii-data-quality-report---missing-or-inconsistent-data-1) 
 there are missing `learner_id` values which still contain values across the 
 other columns. However, due to the time constraints for this data mining report,
 the data would simply be deleted instead.
 
-Furthermore, there are [duplicates and some individual `learner_id` who have not completed all of the `quiz_question`](#ii-data-quality-report---missing-or-inconsistent-data). To fix
+Furthermore, there are [duplicates and some individual `learner_id` who have not completed all of the `quiz_question`](#ii-data-quality-report---missing-or-inconsistent-data-1). To fix
 that, remove duplicates by assuming that the first attempt is the honest attempt
 and the others are re-attempts to get the right answer, then remove any 
 `learner_id` individuals who have not completed all of course's `quiz_question`.
 
 The changes are made under the files `munge/01-B.R` and `munge/02-A.R`.
 
-### Integrating Data: Merged Data
+### Integrating Data: Merged Data 1
 
 There will be no merging data, as keeping the datasets separate for each run 
-makes it easy to do analysis in the [modelling section](#modelling).
+makes it easy to do analysis in the [modelling section](#modelling-1).
 
-### Formating Data: Reformatted Data
+### Formating Data: Reformatted Data 1
 
 After excluding the irrelevant columns, the rest of the columns 
 data types are character types or numerical data types. 
 `learner_id` and `quiz_question` data types will
 be changed into factor data type as these columns are basically categorical data; 
 for the `correct` as explained in 
-[data quality report](#i-data-quality-report---data-types) only contains 
+[data quality report](#i-data-quality-report---data-types-1) only contains 
 "false" and "true" thus it should reflect that by changing it to a logical 
 data type.
 
@@ -677,12 +677,12 @@ The changes are made under the file `munge/02-B.R`.
 
 ## Data Understanding - after data preprocessing
 
-### Exploring Data
+### Exploring Data 1
 
 Exploring the datasets after data preprocessing has shown that the first run 
 has the widest margin on total size of rows, totaling
 `r format(run1_qr %>% nrow(), big.mark = ",")`. This can impact the 
-accuracy of comparing runs to achieve [business' success criteria](#determining-business-objectives-business-success-criteria) as the 
+accuracy of comparing runs to achieve [business' success criteria](#determining-business-objectives-business-success-criteria-1) as the 
 first run has the most data, whereas the other course runs are more scarce 
 compare to it - there more participants completing the course in run 1 rather
 any other run.
@@ -710,17 +710,17 @@ total_rows_per_run = total_rows_per_run %>%
 knitr::kable(total_rows_per_run, caption = "Total rows of each run, `Run 1` is by far the largest out of all rows")
 ```
 
-## **Modelling**
+## **Modelling 1**
 
 ```{r cycle1_modelling, echo=FALSE, message=FALSE, warning=FALSE}
 source("src/cycle1_modelling.R")
 ```
 
-### Selecting Model Technique
+### Selecting Model Technique 1
 
 Following the 
-[business success criteria](#determining-business-objectives-business-success-criteria)
-to represent the retrieved data after [data preparation](#data-preparation), a 
+[business success criteria](#determining-business-objectives-business-success-criteria-1)
+to represent the retrieved data after [data preparation](#data-preparation-1), a 
 model of a barplot representing each run overall percentage of `correct` and 
 `not correct` answers as stack bars can help to easily interpret the runs'
 overall participants performance on understanding the material and answering 
@@ -729,7 +729,7 @@ see the line for the percentage of `correct` answers across course runs, helping
 to answering the [success criteria "...has it improved over new runs of the
 course?"](#determining-business-objectives-business-success-criteria)
 
-### Building Models: Models and Models Descriptions
+### Building Models: Models and Models Descriptions 1
 
 ```{r barplot_with_lineplot_correct, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Percentage of 'Correct' and 'Not correct' answers for each course run"}
 combined_bar_plot
@@ -765,7 +765,7 @@ Table 10 is the quantiles for percentage of `correct` answers for all of runs in
 total. This helps to see the least, quartiles, average and largest values of 
 the percentage of `correct`.
 
-### Assessing Models
+### Assessing Models 1
 
 ```{r metrics_correct, echo=FALSE, message=FALSE, warning=FALSE}
 run2_percent = paste0(combined_runs_correct_2 %>% 
@@ -809,9 +809,9 @@ lineplot the trend seem to fluctuate:
 * "Run 5" to "Run 7" there is a slight continuous decrease of `r run5_7_decrease`
 
 
-## **Evaluation**
+## **Evaluation 1**
 
-### Evaluating Results
+### Evaluating Results 1
 
 ```{r metrics_overall, echo=FALSE, warning=FALSE, message=FALSE}
 run1_rows_total = total_rows_per_run %>% filter(`Course Runs` == "Run 1") %>% pull(`Total rows of each run`)
@@ -822,8 +822,8 @@ run4_rows_total = total_rows_per_run %>% filter(`Course Runs` == "Run 4") %>% pu
 Determining the most successful course run from dataset available, "Run 2" has the overall
 best percentage of `correct` answers with `r run2_percent` and the least 
 successful is "Run 6" with worst percentage of `correct` answers with
-`r run6_percent`. However, as seen in the [exploring data](#exploring-data), 
-after [data preparation](#data-preparation) where only the participants that
+`r run6_percent`. However, as seen in the [exploring data](#exploring-data-1), 
+after [data preparation](#data-preparation-1) where only the participants that
 was retrieve are those who completed every `quiz_question` for each course run
 to maintain an accurate and consistent dataset, it has costed the overall total
 rows of data where "Run 1" has a total of `r run1_rows_total` compared to other
@@ -842,7 +842,7 @@ slightly successful with an average percentage of `correct` being `r paste0(as.d
 correctly than not. But as it is explained earlier, the dataset is limited to 
 reach accurate conclusions.
 
-### Determining Next Steps
+### Determining Next Steps 1
 
 To disregard this dataset that was made from 
 [data preparation](#data-preparation) is going to be a waste, therefore, it is 
@@ -860,13 +860,13 @@ on course certificates.
 
 # Cycle 2
 
-## **Business Understanding**
+## **Business Understanding 2**
 
-### Determining Business Objectives: Business Objectives
+### Determining Business Objectives: Business Objectives 2
 
 Following the [first cycle](#cycle-1), a better use of the data was to combine
 the course runs into one to determine better insights. One solution, as 
-mentioned in [determining next steps](#determing-next-steps) section, is to 
+mentioned in [determining next steps](#determining-next-steps-1) section, is to 
 find correlation if the participants answering quizzes and tests more correctly
 would encourage the participants to buy course certificates.
 
@@ -876,15 +876,15 @@ certificates for the course, therefore, correlation on this can let the company
 to focus more helping students understand the course better and encouraging
 the participants to engage on answering quizzes and questions.
 
-### Determining Business Objectives: Business Success Criteria
+### Determining Business Objectives: Business Success Criteria 2
 
 * "Is there a correlation where if participants are answering quizzes and tests
 more correctly, it would likely encourage the participants to buy a 
 course certificates?"
 
-## **Data Understanding**
+## **Data Understanding 2**
 
-### Describing Data: Data Description Report
+### Describing Data: Data Description Report 2
 
 The [FutureLearn](https://www.futurelearn.com/) platform provides an option 
 to purchase certificates from the online courses. The datasets that contains
@@ -897,7 +897,7 @@ The most related columns are for the enrolments datasets:
 
 * `purchased_statement_at` - date of purchase for a certificate.
 
-### Exploring Data
+### Exploring Data 2
 
 ```{r enrolments_data, echo=FALSE, message=FALSE, warning=FALSE}
 combined_runs_enrolments = bind_rows(cyber.security.1_enrolments,
@@ -920,14 +920,14 @@ a total of `r combined_runs_enrolments %>% filter(purchased_statement_at != "") 
 out of `r combined_runs_enrolments %>% nrow()` participants who have purchased
 a certificate.
 
-### Verifying Data Quality: Data Quality Report
+### Verifying Data Quality: Data Quality Report 2
 
 In this section of quality report, the enrolments dataset columns that will only
-be covered is "learner_id" and "purchased_statement" as there are the most
+be covered is `learner_id` and `purchased_statement` as there are the most
 related to the 
-[business success](#determining-business-objectives-business-success-criteria). 
+[business success](#determining-business-objectives-business-success-criteria-2). 
 
-### I Data Quality Report - Data Types
+### I Data Quality Report - Data Types 2
 
 ```{r data_quality_cycle2, echo=FALSE, message=FALSE, warning=FALSE}
 data_types_enrolment = as.data.frame(sapply(combined_runs_enrolments %>%
@@ -947,15 +947,84 @@ ids' for each participants.
 convert to POSIX standard to capture the time series data,
 
 
-### II Data Quality Report - Missing or Inconsistent Data
+### II Data Quality Report - Missing or Inconsistent Data 2
 
 There is no significant missing data nor inconsistent data in the 
 enrolments dataset to be found that effects the 
-[business success criteria](#determining-business-objectives-business-success-criteria).
+[business success criteria](#determining-business-objectives-business-success-criteria-2).
 
-## **Data Preparation**
+## **Data Preparation 2**
 
-...
+[As established earlier](#data-understanding-2), 
+the enrolment dataset of `cyber.security.1_enrolments` 
+to `cyber.security.7_enrolments` is the most applicable to the 
+cycle 2 
+[business success criteria](#determining-business-objectives-business-success-criteria-2)
+of finding the correlation of purchased certificate with question being 
+answered correctly.
+
+### Integrating Data: Merged Data 2-1
+
+Stepping ahead of [selecting data](#selecting-data-2), it is better to merge the enrolment data
+into one from now on to make the other steps of 
+[data preparation](#data-preparation) easier to process. The reason to merge 
+the course runs into one big dataset is that the 
+[success ceriteria](#determining-business-objectives-business-success-criteria)
+is focused on the overall runs to find if there is correlation between 
+participants purchasing a certificate and answering question correctly.
+
+The changes are made under the file `munge/03-A.R`.
+
+### Selecting Data: Rationale for inclusion / exclusion 2 {#selecting-data-2}
+
+As explained under [data understanding](#data-understanding-2), the most
+relevant columns in the enrolment dataset are:
+
+* `learner_id` - to identify individual participant.
+
+* `purchased_statement_at` - to see if the participant have purchased a 
+certificate or not.
+
+The changes are made under the file `munge/03-AA.R`.
+
+### Cleaning Data: Data Cleaning Report 2
+
+Under the 
+[data quality](#ii-data-quality-report---missing-or-inconsistent-data-2) 
+section, there were no missing or inconsistent
+data on the enrolment dataset that could effect the 
+[success criteria](#determining-business-objectives-business-success-criteria-2).
+
+### Formating Data: Reformatted Data 2
+
+Before discussing how and why merge the data of enrolment dataset to the 
+cycle 1 `run1_qr` and `run7_qr`, it is first important to update the data types
+of the enrolment data type to avoid issues when merging.
+
+* `learner_id` - convert from character type to factor type as it representing
+a categorical data of unique ids that identify each individual participants.
+
+* `purchased_statement_at` - convert from character type to a logical type. This
+would seem a bit strange as the values seem to be representing 
+[POSIX date time](https://www.iso.org/iso-8601-date-and-time-format.html)
+values, however, the 
+[success criteria](#determining-business-objectives-business-success-criteria-2)
+only cares about if the participants have purchased certificates or not 
+thus any empty string will be converted to the value `FALSE` and `TRUE` 
+otherwise.
+
+The changes are made under the file `munge/03-B.R`.
+
+### Integrating Data: Merged Data 2-2
+
+From the [determining next steps](#determining-next-steps-1) section ideas, a 
+merging of dataset for `run1_qr` to `run7_qr` to the enrolment dataset 
+helps to narrow the dataset to only assess the participants who have 
+answered every questions step during the course entire runs and find if there
+is any correlation of participants who have answered correctly would more 
+likely purchase a certificate.
+
+The changes are made under the file `munge/03-C.R`.
 
 ## **Modelling**
 
