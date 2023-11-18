@@ -849,7 +849,7 @@ To disregard this dataset that was made from
 better solution to combine the course runs into one to determine other 
 insights for the business needs. A possible route is determining for all the 
 participants who have participated on answering all the questions in the courses
-runs whether the having participants getting more `correct` answer encourages 
+runs whether having participants getting more `correct` answer encourages 
 the participants to buy a certificate from the course or there is no 
 correlation to it. This would help to give the business an insight to whether 
 improve the course runs to help the understanding of the participants to 
@@ -1143,11 +1143,14 @@ certificate compared to those who have. The heatmap shows an even divide between
 participants' answer correctness for each combination of purchase certificate 
 status:
 
-* For participants with a purchase status of 'FALSE', the heatmap indicates 
-19,193 instances of incorrect answers and 16,645 instances of correct answers.
+* For participants with a purchase status of `FALSE`, the heatmap indicates 
+`r false_true_correct` instances of incorrect answers and 
+`r false_false_correct` instances of correct answers.
 
-* For participants with a purchase status of 'TRUE', the heatmap shows 2,544 
-instances of incorrect answers and 1,680 instances of correct answers.
+* For participants with a purchase status of `TRUE`, the heatmap shows 
+`r true_true_correct` 
+instances of incorrect answers and
+`r true_false_correct` instances of correct answers.
 
 The heatmap's visual representation aligns with the numeric division, further 
 supporting the conclusion that there is no discernible correlation. Participants
@@ -1165,9 +1168,69 @@ certificates.
 
 ### Final Report: Summary 2
 
-...
+In the first cycle of evaluation, the primary objective was to assess the 
+success of the online course and determine if it had improved over subsequent 
+runs. The analysis focused on the dataset spanning 
+`cyber.security.1_question.response` to `cyber.security.2_question.response`, 
+specifically examining the variable `correct` to gauge participants' 
+understanding of the course material. Notably, the investigation identified 
+"Run 2" as the most successful course run, boasting the highest percentage of 
+correct answers at `r run2_percent`, while "Run 6" emerged as the least successful with a 
+lower percentage of correct answers at `r run6_percent`.
+
+However, during the data preparation phase, a decision was made to select 
+participants who completed every quiz question for each course run, aiming to 
+maintain a consistent and accurate dataset. This approach, while enhancing data 
+quality, led to discrepancies in dataset sizes. "Run 1" emerged with a notably 
+larger dataset of `r run1_rows_total` compared to others with significantly fewer rows, such 
+as "Run 5" with only `r run5_rows_total` rows. Despite these limitations, the evaluation aimed 
+to discern if the course runs had improved over time. Unfortunately, due to the 
+dataset's limited size for certain runs, conclusive findings regarding 
+improvements or degradation were challenging to ascertain. The overall average 
+percentage of correct answers fluctuated around 
+`r paste0(as.data.frame(quantile_crc) %>% pull("50%"),"%")`, indicating a modest 
+level of success for the course within the dataset's constraints.
+
+Transitioning to the second cycle, the decision was made not to disregard the 
+dataset resulting from data preparation, but instead, to combine course runs for
+further insights. The new business success criteria posed was, "Is there a 
+correlation where participants answering quizzes and tests more correctly would 
+likely encourage them to buy a course certificate?" To explore this, a heatmap 
+Figure 2 was employed to visually assess the correlation between participants' 
+purchase certificate status and answer correctness.
+
+The findings from Figure 1 revealed a high concentration of participants who had
+not purchased a certificate, contrasting with those who had. The heatmap 
+demonstrated an even divide between participants' answer correctness for each 
+combination of purchase certificate status. For participants with a purchase 
+status of `FALSE`, there were `r false_false_correct` instances of incorrect 
+answers and `r false_true_correct`
+instances of correct answers. On the other hand, for participants with a 
+purchase status of `TRUE`, there were `r true_false_correct` instances of 
+incorrect answers and 
+`r true_true_correct` instances of correct answers. The visual representation 
+of the heatmap did
+not show a clear correlation, suggesting that participants answering quizzes and
+tests more correctly did not exhibit a significant tendency to purchase a course
+certificate.
+
+In summary, the heatmap analysis reinforced the conclusion that answer 
+correctness does not serve as a strong predictor for participants' likelihood to
+purchase a certificate. The absence of a distinct pattern in the heatmap 
+indicated that additional factors or variables may need consideration for a 
+better understanding of participants' decisions to purchase certificates.
 
 ### Final Report: Deploying a Presentation
 
-...
+As part of the comprehensive analysis and reporting process, the findings from 
+the two evaluation cycles will be presented in a structured and visually 
+engaging format. The presentation aims to distill the key insights obtained 
+from the journey through each cycle; delving into the challenges faced 
+during the first cycle, 
+the transition to the second cycle, and the intriguing results obtained from the
+correlation analysis presented in a heatmap format, the presentation serves as a
+strategic means to communicate the discoveries to stakeholders. 
+This visual exploration 
+navigates through the intricacies of the analyses, ultimately contributing 
+valuable insights to ongoing discussions and future course enhancements.
 
