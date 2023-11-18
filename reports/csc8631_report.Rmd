@@ -1010,8 +1010,7 @@ would seem a bit strange as the values seem to be representing
 values, however, the 
 [success criteria](#determining-business-objectives-business-success-criteria-2)
 only cares about if the participants have purchased certificates or not 
-thus any empty string will be converted to the value `FALSE` and `TRUE` 
-otherwise.
+thus any empty string will be converted to the value `FALSE` otherwise `TRUE`.
 
 The changes are made under the file `munge/03-B.R`.
 
