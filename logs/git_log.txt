@@ -1,3 +1,15 @@
+commit 8223429e535f8c3d1525a9a2ae1b0d3664c69518
+Author: Srking501 <alshadadiabdullah853@gmail.com>
+Date:   Sat Nov 18 14:38:15 2023 +0000
+
+    fix spelling on the title of the data mining report
+
+commit 9a0ef6a752fb348ed33c7e7f15dcfca8443eb2ea
+Author: Srking501 <alshadadiabdullah853@gmail.com>
+Date:   Sat Nov 18 14:26:31 2023 +0000
+
+    added a `git_log.txt`
+
 commit 7b3bfdc92e1e741df48b256d1b79c4d75d037df1
 Author: Srking501 <alshadadiabdullah853@gmail.com>
 Date:   Sat Nov 18 14:22:20 2023 +0000
