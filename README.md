@@ -1,39 +1,42 @@
-# futurelearn_mooc
+# MANUAL FOR THE CSC8631
 
-Welcome to ProjectTemplate!
+## How to run the code
 
-This file introduces you to ProjectTemplate, but you should eventually replace
-the contents of this file with an introduction to your project. People who
-work with your data in the future will thank you for it, including your future
-self.
+What you only need to do is to have the library `ProjectTemplate` loaded and
+then run the project by using the function `load.project()`:
 
-ProjectTemplate is an R package that helps you organize your statistical
-analysis projects. Since you're reading this file, we'll assume that you've
-already called `create.project()` to set up this project and all of its
-contents.
+```r
+library(ProjectTemplate)
+load.project()
+```
 
-To load your new project, you'll first need to `setwd()` into the directory
-where this README file is located. Then you need to run the following two
-lines of R code:
+Otherwise if it does not work, first install the package `ProjectTemplate`:
 
-	library('ProjectTemplate')
-	load.project()
+```r
+install.packages(ProjectTemplate)
+library(ProjectTemplate)
+load.project()
+```
 
-After you enter the second line of code, you'll see a series of automated
-messages as ProjectTemplate goes about doing its work. This work involves:
-* Reading in the global configuration file contained in `config`.
-* Loading any R packages you listed in the configuration file.
-* Reading in any datasets stored in `data` or `cache`.
-* Preprocessing your data using the files in the `munge` directory.
+## Location of the Report, Reflection and Git Log
 
-Once that's done, you can execute any code you'd like. For every analysis
-you create, we'd recommend putting a separate file in the `src` directory.
-If the files start with the two lines mentioned above:
+You can find the report and reflection under this directory:
 
-	library('ProjectTemplate')
-	load.project()
+```
+reports/csc8631_report.pdf
+reports/csc8631_reflection.pdf
+```
 
-You'll have access to all of your data, already fully preprocessed, and
-all of the libraries you want to use.
+Whereas the git log, you can find it under this directory:
 
-For more details about ProjectTemplate, see http://projecttemplate.net
+```
+logs/git_log.txt
+```
+
+## Thanks from
+
+> Abdullah Alshadadi
+>
+> Msc Data Science (with AI)
+>
+> 190582184
