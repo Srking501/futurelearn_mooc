@@ -46,9 +46,9 @@ section for each run
 ---
 REFLECTION
 
-[ ] Difficulties to write dynamic code, the programming language design of
+[X] Difficulties to write dynamic code, the programming language design of
 how it creates dataframes requires the use of variable rather than dynamically
 selecting the dataframes and renaming them or creating new dataframes through
-a function
+a function like in Python
 
-[ ] Discuss how exploring data should also be an option after data preparation
+[X] Discuss how exploring data should also be an option after data preparation

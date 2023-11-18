@@ -1,5 +1,5 @@
 ---
-title: 'CSC8631 Project: Learning Anaylitcs'
+title: 'CSC8631 Project: Learning Analyitcs'
 author: "Abdullah Turki H Alshadadi, 190582184"
 output: pdf_document
 ---
