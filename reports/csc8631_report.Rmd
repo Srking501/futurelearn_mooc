@@ -880,7 +880,7 @@ the participants to engage on answering quizzes and questions.
 
 * "Is there a correlation where if participants are answering quizzes and tests
 more correctly, it would likely encourage the participants to buy a 
-course certificates?"
+course certificate?"
 
 ## **Data Understanding 2**
 
@@ -1132,7 +1132,34 @@ of purchase certificate status:
 
 ### Evaluating Results 2
 
-...
+The analysis of the data, as visualised in Figure 1, reinforces the conclusion 
+that there is no significant correlation between participants' purchase 
+certificate status and their answer correctness. The heatmap illustrates the 
+distribution of participants, highlighting the absence of a pronounced pattern 
+indicating a relationship between these two variables.
+
+Figure 1 depicts a high concentration of participants who have not purchased a 
+certificate compared to those who have. The heatmap shows an even divide between
+participants' answer correctness for each combination of purchase certificate 
+status:
+
+* For participants with a purchase status of 'FALSE', the heatmap indicates 
+19,193 instances of incorrect answers and 16,645 instances of correct answers.
+
+* For participants with a purchase status of 'TRUE', the heatmap shows 2,544 
+instances of incorrect answers and 1,680 instances of correct answers.
+
+The heatmap's visual representation aligns with the numeric division, further 
+supporting the conclusion that there is no discernible correlation. Participants
+who answer quizzes and tests more correctly do not exhibit a clear tendency to 
+purchase a course certificate.
+
+In summary, the heatmap reinforces the analysis, suggesting that answer 
+correctness does not serve as a strong predictor for participants' likelihood to
+purchase a certificate. The absence of a distinct pattern in the heatmap 
+indicates that additional factors or variables may need to be considered to 
+better understand the factors influencing participants' decisions to purchase 
+certificates.
 
 ## **Deployment 2**
 
