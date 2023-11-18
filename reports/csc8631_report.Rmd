@@ -910,9 +910,9 @@ combined_runs_enrolments = bind_rows(cyber.security.1_enrolments,
 
 purchased_cert = data.frame(purchased_statement = combined_runs_enrolments %>% filter(purchased_statement_at != "") %>% nrow(),
                             not_purchased_statement = combined_runs_enrolments %>% filter(purchased_statement_at == "") %>% nrow()) %>%
-    rename("Bought Certificate" = purchased_statement,
-           "Not Bought Certificate" = not_purchased_statement)
-knitr::kable(purchased_cert, caption = "Total participants who bought or not bought certificates")
+    rename("Purchased Certificate" = purchased_statement,
+           "Not Purchased Certificate" = not_purchased_statement)
+knitr::kable(purchased_cert, caption = "Total participants who Purchased or Not Purchased Certificates")
 ```
 
 Exploring the enrolments data column `purchased_statement_at`, there are
@@ -1011,6 +1011,8 @@ values, however, the
 [success criteria](#determining-business-objectives-business-success-criteria-2)
 only cares about if the participants have purchased certificates or not 
 thus any empty string will be converted to the value `FALSE` otherwise `TRUE`.
+Furthermore, renaming `purchase_certificate` will help explain what the 
+column is for and also better fit the new logical data type.
 
 The changes are made under the file `munge/03-B.R`.
 
@@ -1021,18 +1023,124 @@ merging of dataset for `run1_qr` to `run7_qr` to the enrolment dataset
 helps to narrow the dataset to only assess the participants who have 
 answered every questions step during the course entire runs and find if there
 is any correlation of participants who have answered correctly would more 
-likely purchase a certificate.
+likely purchase a certificate. 
 
-The changes are made under the file `munge/03-C.R`.
+The changes are made under the file `munge/03-C.R` - the merged dataset is going
+to be called `merged_enrolment_data`.
 
-## **Modelling**
+## **Modelling 2**
+
+```{r cycle2_modelling, echo=FALSE, warning=FALSE, message=FALSE}
+source("src/cycle2_modelling.R")
+```
+
+### Selecting Model Technique 2
+
+```{r modelling_techniq, echo=FALSE, warning=FALSE, message=FALSE}
+merged_colnames = paste0("`", merged_enrolment_data %>% colnames(), "`")
+merged_data_type_model = paste0("`", merged_enrolment_data %>%
+                              select(purchase_certificate, correct) %>%
+                              pull() %>%
+                              class(),
+                          "`")
+```
+
+After the [data preparation](#data-preparation-2), the `merged_enrolment_data` 
+columns are `r merged_colnames`. As [explained earlier](#data-understanding), 
+the most relevant columns to are `learner_id` and `purchase_certificate` but 
+[also `correct`](#integrating-data-merged-data-2-2) to answer the 
+[business success criteria](#determining-business-objectives-business-success-criteria-2).
+These are the columns that represent if each individual participant have 
+purchased a certificate and if the answered question correctly in the course
+quizzes and tests.
+
+Therefore, a model should plot each `learner_id` against axis 
+of `purchased_certiifcate` and `correct` columns. However, the both 
+`purchased_certificate` and `correct` columns are `r merged_data_type_model`, 
+meaning that it cannot simply be represented as scatterplot to investigate
+a correlation. 
+
+A solution is to create a heatmap that has axis values of 
+`TRUE` or `FALSE` for these columns to `learner_id` against it. This will 
+provided the insight to see if the individual participants that answers 
+questions correctly will likely purchase a certificate.
+
+```{r enrol_dataset_sample, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::kable(merged_enrolment_data %>%
+                 select(-week_number,
+                        -step_number,
+                        -question_number) %>%
+                 head(n = 5), caption = "Sample of `merged_enrolment_data` dataset (excluded `week_number`, `step_number` and `question_number` for visualisation purposes)")
+```
+
+### Building Models: Models and Models Descriptions 2
+
+Figure 2 is a heatmap representing the distribution of individual participants
+against values of the logical type of `FALSE` and `TRUE`. Each cell in the 
+heatmap represents a combination of a participant's purchase certificate status 
+and whether their answer was correct. The colour of each cell is determined by 
+the number of participants falling into that combination. 
+
+The color intensity in each cell indicates the count of participants for a 
+specific combination of purchase certificate and answer correctness. A gradient 
+from light gray to dark blue is used, where darker shades represent higher 
+participant counts.
+
+Table 9 provides a clear and organised view of the participant counts for 
+different combinations of purchase certificate status and answer correctness. 
+Each row in the table corresponds to a unique combination, and the 
+"Participants Count" column displays the count of participants in a 
+human-readable format with commas as thousand separators. This summary 
+facilitates easy interpretation and comparison of participant distribution 
+across various categories.
+
+```{r heatmap_plot, echo=FALSE, warning=FALSE, message=FALSE, fig.cap="Heatmap for Purchase Certificate against Answer Correct"}
+heatmap_enrol
+
+knitr::kable(summary_of_heatmap_enrol, caption = "Summary of heatmap figure")
+```
+
+### Assessing Models 2
+
+```{r summary_enrol, warning=FALSE, message=FALSE, echo=FALSE}
+false_true_correct = summary_of_heatmap_enrol %>% 
+    filter(`Purchase Certificate` == FALSE & `Answer Correct` == TRUE) %>%
+    pull(`Participants Count`)
+false_false_correct = summary_of_heatmap_enrol %>% 
+    filter(`Purchase Certificate` == FALSE & `Answer Correct` == FALSE) %>%
+    pull(`Participants Count`)
+true_true_correct = summary_of_heatmap_enrol %>% 
+    filter(`Purchase Certificate` == TRUE & `Answer Correct` == TRUE) %>%
+    pull(`Participants Count`)
+true_false_correct = summary_of_heatmap_enrol %>% 
+    filter(`Purchase Certificate` == TRUE & `Answer Correct` == FALSE) %>%
+    pull(`Participants Count`)
+```
+
+Figure 1 shows high concentration of participants have not purchased a 
+certificate compared to those who have. It that there is an even 
+divide between of the participants answer correctness for each combination 
+of purchase certificate status:
+
+* Purchase status `FALSE` have the division of `r false_true_correct` and 
+`r false_false_correct` for answers correctly or not respectively.
+
+* Purchase status `TRUE` have the division of `r true_true_correct` and 
+`r true_false_correct` for answers correctly or not respectively.
+
+## **Evaluation 2**
+
+### Evaluating Results 2
 
 ...
 
-## **Evaluation**
+## **Deployment 2**
+
+### Final Report: Summary 2
 
 ...
 
-## **Deployment**
+### Final Report: Deploying a Presentation
 
 ...
+

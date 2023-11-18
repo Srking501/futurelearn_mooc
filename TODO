@@ -6,6 +6,9 @@ DATA MINING REPORT
 [ ] Under the "I Data Quality Report - Data Types", mention how the column
 `question_type` only have one value, "MultipleChoice".
 
+[X] Update the headers with numbers to help referencing to be distinguished
+from cycle 1 and cycle 2.
+
 [X] A participants has submitted more than one answer, the key column that
 distinguish each one is `submitted_at`. Therefore, in data cleaning, only
 assume the first submission as the others could be participants trying to get
